@@ -1,23 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import AppRoutes from './components/AppRoutes';
+import Detail from './pages/Detail';
+import Error404 from './pages/errors/Error404';
+import Main from './pages/Main';
+import './styles/App.css';
+
+const routes = [
+  {path: "/", component: Main, exact: true},
+  {path: "/detail/:id", component: Detail, exact: true},
+  {path: "/error/404", component: Error404, exact: true},
+];
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <AppRoutes routes={routes}/>
     </div>
   );
 }
