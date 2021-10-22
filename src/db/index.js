@@ -1,4 +1,4 @@
-export const actors = [
+export const actorsData = [
   {id: 1, name: "Уилл Смит"},
   {id: 2, name: "Джейден Смит"},
   {id: 3, name: "Роберт Дауни мл."},
@@ -15,7 +15,7 @@ export const actors = [
   {id: 14, name: "Ян Цапник"},
 ];
 
-export const genres = [
+export const genresData = [
   {id: 1, genre: "драма"},
   {id: 2, genre: "биография"},
   {id: 3, genre: "фантастика"},
@@ -27,14 +27,14 @@ export const genres = [
   {id: 9, genre: "мелодрама"},
 ]
 
-export const filmes = [
+export const filmesData = [
   {
     id: 1,
     name: "В погоне за счастьем",
     image: "https://upload.wikimedia.org/wikipedia/ru/3/3e/Pursuit_happyness_poster.jpg",
     director: "Габриэле Муччино",
-    genres: [1, 2],
-    actors: [1, 2],
+    genres: [genresData[1], genresData[2]],
+    actors: [actorsData[1], actorsData[2]],
     publishYear: 2006,
   },
   {
@@ -42,8 +42,8 @@ export const filmes = [
     name: "Мстители: Финал",
     image: "https://upload.wikimedia.org/wikipedia/ru/a/a4/The_Avengers_Endgame_Poster.jpg",
     director: "Джо Руссо",
-    genres: [3, 4, 1, 5],
-    actors: [3, 4, 5, 6],
+    genres: [genresData[3], genresData[4], genresData[1], genresData[5]],
+    actors: [actorsData[3], actorsData[4], actorsData[5], actorsData[6]],
     publishYear: 2019,
   },
   {
@@ -51,8 +51,8 @@ export const filmes = [
     name: "Холоп",
     image: "https://upload.wikimedia.org/wikipedia/ru/d/d7/%D0%A5%D0%BE%D0%BB%D0%BE%D0%BF_%28%D1%84%D0%B8%D0%BB%D1%8C%D0%BC%29.jpg",
     director: "Клим Шипенко",
-    genres: [6],
-    actors: [7, 8, 9],
+    genres: [genresData[6]],
+    actors: [actorsData[7], actorsData[8], actorsData[9]],
     publishYear: 2019,
   },
   {
@@ -60,8 +60,8 @@ export const filmes = [
     name: "Астрал",
     image: "https://upload.wikimedia.org/wikipedia/ru/thumb/6/61/Insidious_2011.jpg/200px-Insidious_2011.jpg",
     director: "Джеймс Ван",
-    genres: [7, 8],
-    actors: [10, 11, 12],
+    genres: [genresData[7], genresData[8]],
+    actors: [actorsData[10], actorsData[11], actorsData[12]],
     publishYear: 2010,
   },
   {
@@ -69,8 +69,8 @@ export const filmes = [
     name: "Временные трудности",
     image: "https://upload.wikimedia.org/wikipedia/ru/4/43/%D0%92%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%BD%D1%8B%D0%B5_%D1%82%D1%80%D1%83%D0%B4%D0%BD%D0%BE%D1%81%D1%82%D0%B8.jpg",
     director: "Михаил Расходников",
-    genres: [1, 9],
-    actors: [13, 9, 14],
+    genres: [genresData[1], genresData[9]],
+    actors: [actorsData[13], actorsData[9], actorsData[14]],
     publishYear: 2018,
   },
 ];
