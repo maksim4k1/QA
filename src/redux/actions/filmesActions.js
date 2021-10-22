@@ -10,7 +10,10 @@ export function sortFilmesAction(){
   return {type: SORT_FILMES};
 }
 export function setSortFilmesValueAction(value){
-  return {type: SET_SORT_VALUE, payload: value};
+  return function(dispatch){
+    dispatch({type: SET_SORT_VALUE, payload: value});
+    dispatch(sortFilmesAction());
+  };
 }
 export function setSearchFilmesValueAction(value){
   return {type: SET_SEARCH_VALUE, payload: value};
