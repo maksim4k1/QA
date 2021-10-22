@@ -6,7 +6,7 @@ function AppRoutes ({routes}) {
     <Switch>
       {
         routes.map((route, index) => {
-          return <Route id={index} {...route}/>
+          return <Route key={index} {...route}/>
         })
       }
       <Redirect to="/error/404"/>

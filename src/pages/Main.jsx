@@ -1,11 +1,39 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import styled from "styled-components";
+import Card from "../components/UI/Card";
+import { getFilmesAction } from "../redux/actions/filmesActions";
+import { gap } from "../styles/mixins";
 
-function Main () {
+const List = styled.ul`
+  display: flex;
+  flex-flow: column;
+  ${gap("20px")}
+`;
+
+function Main ({filmes, getFilmes}) {
+  useEffect(() => {
+    getFilmes();
+  }, [getFilmes]);
+
   return(
-    <div>
-      
-    </div>
+    <main className="content container">
+      <List>
+        {
+          filmes.map(film => {
+            return <Card key={film.id} {...film}/>;
+          })
+        }
+      </List>
+    </main>
   );
 }
 
-export default Main;
+const mapStateToProps = (state) => ({
+  filmes: state.filmes.sortedFilmes,
+});
+const mapDispatchToProps = {
+  getFilmes :getFilmesAction,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);
