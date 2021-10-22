@@ -35,6 +35,9 @@ body{
   color: var(--color-black);
   font-family: 'Montserrat', sans-serif;
 }
+strong{
+  font-weight: 600;
+}
 
 /* Переменные */
 :root{
@@ -42,5 +45,6 @@ body{
   --color-black: #383838;
   --color-gray: #D6D6D6;
   --color-blue: #44A1E8;
-  --main-bg-gray: #606060;
+  --color-bg-gray: #F1F1F1;
+  --color-txt-gray: #606060;
 }
