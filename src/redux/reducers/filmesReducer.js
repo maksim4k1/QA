@@ -1,5 +1,5 @@
 import { filmesData } from "../../db";
-import { FIND_FILM, GET_FILM, GET_FILMES, SET_SEARCH_VALUE, SET_SORT_VALUE, SORT_FILMES } from "../types";
+import { GET_FILM, GET_FILMES, SET_SEARCH_VALUE, SET_SORT_VALUE, SORT_FILMES } from "../types";
 
 const initialState = {
   filmes: [],
@@ -22,18 +22,12 @@ function filmesReducer(state=initialState, {type, payload}){
         selectedFilm: state.filmes.find(film => film.id === payload)
       };
     } case SORT_FILMES: {
-      const sortedFilmes = state.filmes.filter(film => film.genres.find(genre => genre === state.sort));
+      let sortedFilmes = state.filmes.filter(film => film.genres.find(genre => genre === state.sort));
+      const findFilmesByName = sortedFilmes.filter(film => film === state.search);
+      const findFilmesByActors = sortedFilmes.filter(film => film.actors.find(actor => actor === state.search));
 
-      return {
-        ...state,
-        sortedFilmes
-      };
-    } case FIND_FILM: {
-      const findFilmesByName = state.filmes.filter(film => film === state.search);
-      const findFilmesByActors = state.filmes.filter(film => film.actors.find(actor => actor === state.search));
+      sortedFilmes = findFilmesByName.concat(findFilmesByActors.filter(item => findFilmesByName.find(el => el === item.id) !== undefined));
 
-      const sortedFilmes = findFilmesByName.concat(findFilmesByActors.filter(item => findFilmesByName.find(el => el === item.id) !== undefined));
-      
       return {
         ...state,
         sortedFilmes
