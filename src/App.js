@@ -1,4 +1,5 @@
 import AppRoutes from './components/AppRoutes';
+import Header from './components/UI/Header';
 import Detail from './pages/Detail';
 import Error404 from './pages/errors/Error404';
 import Main from './pages/Main';
@@ -13,6 +14,7 @@ const routes = [
 function App() {
   return (
     <div className="App">
+      <Header/>
       <AppRoutes routes={routes}/>
     </div>
   );
