@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
+import FilterForm from "../components/FilterForm";
 import Card from "../components/UI/Card";
 import { getFilmesAction } from "../redux/actions/filmesActions";
 import { gap } from "../styles/mixins";
@@ -18,6 +19,7 @@ function Main ({filmes, getFilmes}) {
 
   return(
     <main className="content container">
+      <FilterForm/>
       <List>
         {
           filmes.map(film => {
