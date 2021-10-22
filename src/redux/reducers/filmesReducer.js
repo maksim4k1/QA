@@ -14,7 +14,8 @@ function filmesReducer(state=initialState, {type, payload}){
     case GET_FILMES: {
       return {
         ...state,
-        filmes: filmesData
+        filmes: filmesData,
+        sortedFilmes: filmesData,
       };
     } case GET_FILM: {
       return {
@@ -22,11 +23,12 @@ function filmesReducer(state=initialState, {type, payload}){
         selectedFilm: state.filmes.find(film => film.id === payload)
       };
     } case SORT_FILMES: {
-      let sortedFilmes = state.filmes.filter(film => film.genres.find(genre => genre === state.sort));
-      const findFilmesByName = sortedFilmes.filter(film => film === state.search);
-      const findFilmesByActors = sortedFilmes.filter(film => film.actors.find(actor => actor === state.search));
+      let sortedFilmes = state.sort ? state.filmes.filter(film => film.genres.find(genre => genre === state.sort)) : state.filmes;
 
-      sortedFilmes = findFilmesByName.concat(findFilmesByActors.filter(item => findFilmesByName.find(el => el === item.id) !== undefined));
+      const findFilmesByName = sortedFilmes.filter(film => film.name.includes(state.search) === true);
+      const findFilmesByActors = sortedFilmes.filter(film => film.actors.find(actor => actor.includes(state.search) === true));
+
+      sortedFilmes = findFilmesByName.concat(findFilmesByActors.filter(item => findFilmesByName.find(el => el.id === item.id) === undefined));
 
       return {
         ...state,

@@ -30,7 +30,7 @@ function Main ({filmes, getFilmes}) {
 }
 
 const mapStateToProps = (state) => ({
-  filmes: state.filmes.filmes,
+  filmes: state.filmes.sortedFilmes,
 });
 const mapDispatchToProps = {
   getFilmes :getFilmesAction,
