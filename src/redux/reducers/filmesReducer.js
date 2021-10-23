@@ -4,7 +4,7 @@ import { ADD_NEW_FILM, GET_FILM, GET_FILMES, SET_ERROR, SET_SEARCH_VALUE, SET_SO
 const initialState = {
   filmes: [],
   sortedFilmes: [],
-  selectedFilm: null,
+  selectedFilm: {},
   sort: "",
   search: "",
   error: "",
@@ -21,7 +21,7 @@ function filmesReducer(state=initialState, {type, payload}){
     } case GET_FILM: {
       return {
         ...state,
-        selectedFilm: state.filmes.find(film => film.id === payload)
+        selectedFilm: state.filmes.find(film => film.id === Number(payload))
       };
     } case SORT_FILMES: {
       let sortedFilmes = state.sort ? state.filmes.filter(film => film.genres.find(genre => genre === state.sort) !== undefined) : state.filmes;
