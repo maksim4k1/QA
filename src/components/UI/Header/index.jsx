@@ -51,7 +51,7 @@ function Header ({search, setSearchValue, findFilmes}) {
       <Container className="container">
         <Logo><NavLink to="/">Filmes App</NavLink></Logo>
         <Form onSubmit={filterFilmes}>
-          <Input type="text" placeholder="Search" value={search} onChange={inputHandler} />
+          <Input type="text" placeholder="Search" value={search || ""} onChange={inputHandler} />
           <Button><LoupeIcon/></Button>
         </Form>
       </Container>
