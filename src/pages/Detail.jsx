@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { useParams } from "react-router";
+import { Redirect, useParams } from "react-router";
 import styled from "styled-components";
 import { getFilmeByIdAction } from "../redux/actions/filmesActions";
 import { gap } from "../styles/mixins";
@@ -51,16 +51,22 @@ function Detail ({film, getFilm}) {
   
   return(
     <main className="container content">
-      <Name>{film.name}</Name>
-      <Year>({film.publishYear})</Year>
-      <Content>
-        <Image src={film.image} alt={film.name} />
-        <Info>
-          <InfoItem><strong>Режиссер:</strong>{film.director}</InfoItem>
-          <InfoItem><strong>Жанр:</strong>{film.genres ? film.genres.join(", ") : null}</InfoItem>
-          <InfoItem><strong>Актеры:</strong>{film.actors ? film.actors.join(", ") : null}</InfoItem>
-        </Info>
-      </Content>
+      {
+        film 
+        ? <>
+          <Name>{film.name}</Name>
+          <Year>({film.publishYear})</Year>
+          <Content>
+            <Image src={film.image} alt={film.name} />
+            <Info>
+              <InfoItem><strong>Режиссер:</strong>{film.director}</InfoItem>
+              <InfoItem><strong>Жанр:</strong>{film.genres ? film.genres.join(", ") : null}</InfoItem>
+              <InfoItem><strong>Актеры:</strong>{film.actors ? film.actors.join(", ") : null}</InfoItem>
+            </Info>
+          </Content>
+        </>
+        : <Redirect to="/error/404"/>
+      }
     </main>
   );
 }
