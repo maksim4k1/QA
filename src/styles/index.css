@@ -47,4 +47,5 @@ strong{
   --color-blue: #44A1E8;
   --color-bg-gray: #F1F1F1;
   --color-txt-gray: #606060;
+  --color-bg-modal: rgba(0, 0, 0, 0.7);
 }

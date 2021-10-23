@@ -14,7 +14,7 @@ const Form = styled.div`
   justify-content: space-between;
 `;
 
-function FilterForm ({genres, sort, getGenres, setGenresValue}) {
+function FilterForm ({genres, sort, getGenres, setGenresValue, openModal}) {
   useEffect(() => {
     getGenres();
   }, [sort, getGenres]);
@@ -33,7 +33,7 @@ function FilterForm ({genres, sort, getGenres, setGenresValue}) {
           })
         }
       </Select>
-      <Button style={{padding: "10px", background: "var(--color-blue)", color: "var(--color-white)"}}>Добавить фильм</Button>
+      <Button style={{padding: "10px", background: "var(--color-blue)", color: "var(--color-white)"}} onClick={() => openModal(true)}>Добавить фильм</Button>
     </Form>
   );
 }

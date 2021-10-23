@@ -1,5 +1,5 @@
-import { filmesData } from "../../db";
-import { GET_FILM, GET_FILMES, SET_SEARCH_VALUE, SET_SORT_VALUE, SORT_FILMES } from "../types";
+import { addNewFilmToBd, filmesData } from "../../db";
+import { ADD_NEW_FILM, GET_FILM, GET_FILMES, SET_ERROR, SET_SEARCH_VALUE, SET_SORT_VALUE, SORT_FILMES } from "../types";
 
 const initialState = {
   filmes: [],
@@ -7,6 +7,7 @@ const initialState = {
   selectedFilm: null,
   sort: "",
   search: "",
+  error: "",
 };
 
 function filmesReducer(state=initialState, {type, payload}){
@@ -44,6 +45,18 @@ function filmesReducer(state=initialState, {type, payload}){
         ...state,
         search: payload
       };
+    } case ADD_NEW_FILM: {
+      addNewFilmToBd({...payload, id: state.filmes.length});
+      return {
+        ...state,
+        filmes: filmesData,
+        sortedFilmes: filmesData,
+      }
+    } case SET_ERROR: {
+      return {
+        ...state,
+        error: payload
+      }
     } default: {
       return state;
     }
